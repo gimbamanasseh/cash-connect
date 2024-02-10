@@ -1,0 +1,27 @@
+/* src/styles.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+html,
+body,
+:root {
+  height: 100%;
+  background-color: white;
+  color-scheme: light;
+  font-family: "Inter", sans-serif;
+}
+
+.active h4 {
+  color: #cb1600;
+}
+.active .fill {
+  color: #cb1600;
+  fill: #cb1600 !important;
+  font-weight: 800;
+}
+
+div .ReactModal__Content .ReactModal__Content--after-open {
+  border: none !important;
+}
