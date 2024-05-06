@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import Avatar from "../../../../src/assets/images/avatar.webp";
 
-const TableData = ({ rowData }) => {
+const AgentsTableData = ({ rowData }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleViewAgentData = () => {
+    navigate("/agents/agent-details", { state: { agentData: rowData } });
   };
 
   return (
@@ -37,18 +43,10 @@ const TableData = ({ rowData }) => {
           </div>
         </div>
       </th>
-      <td className="px-4 py-3 text-[#344054]">{rowData.amount}</td>
-      <td className="px-4 py-3">
-        <span className="bg-[#D7FFCC] px-[1rem] py-[0.25rem] rounded-[1.5rem] text-[#1B7A00] font-semibold whitespace-nowrap">
-          {rowData.paymentType}
-        </span>
-      </td>
       <td className="px-4 py-3 text-[#344054]">{rowData.timestamp}</td>
-      <td className="px-4 py-3">
-        <span className="bg-[#D7FFCC] px-[1rem] py-[0.25rem] rounded-[1.5rem] text-[#1B7A00] font-semibold whitespace-nowrap">
-          {rowData.status}
-        </span>
-      </td>
+      <td className="px-4 py-3 text-[#344054]">{rowData.amountAtHand}</td>
+      <td className="px-4 py-3 text-[#344054]">{rowData.paymentRatio}</td>
+      <td className="px-4 py-3 text-[#344054]">{rowData.clientsServiced}</td>
       <td className="absolute py-3 flex items-center justify-center">
         <button
           id={`${rowData.id}-dropdown-button`}
@@ -82,18 +80,28 @@ const TableData = ({ rowData }) => {
           id={`${rowData.id}-dropdown`}
           className={`${
             isDropdownOpen ? "block" : "hidden"
-          } absolute bottom-0 right-14 z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow `}
+          } absolute top-[-1] right-10 z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow `}
         >
           <ul
             className="py-1 text-sm text-gray-700 "
             aria-labelledby={`${rowData.id}-dropdown-button`}
           >
             <li>
+              <a href="#" className="block py-2 px-4 hover:bg-gray-100 ">
+                Assign cash to agent
+              </a>
+            </li>
+            <li>
               <a
-                href="/loans/loan-application-review"
-                className="block py-2 px-4 hover:bg-gray-100 "
+                onClick={handleViewAgentData}
+                className="cursor-pointer block py-2 px-4 hover:bg-gray-100 "
               >
-                Review
+                View agent data
+              </a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-4 hover:bg-gray-100 ">
+                Agent profile
               </a>
             </li>
           </ul>
@@ -102,7 +110,7 @@ const TableData = ({ rowData }) => {
               href="#"
               className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 "
             >
-              Delete
+              Delete Agent
             </a>
           </div>
         </div>
@@ -111,16 +119,16 @@ const TableData = ({ rowData }) => {
   );
 };
 
-TableData.propTypes = {
+AgentsTableData.propTypes = {
   rowData: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    amount: PropTypes.string.isRequired,
-    paymentType: PropTypes.string.isRequired,
+    amountAtHand: PropTypes.string.isRequired,
+    paymentRatio: PropTypes.string.isRequired,
     timestamp: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
+    clientsServiced: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default TableData;
+export default AgentsTableData;

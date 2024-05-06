@@ -1,9 +1,10 @@
 import React from "react";
 import Inputs from "../../../components/Inputs";
 
-const LoanReviewController = ({ control, onClick, ...rest }) => {
+const ClientProfileController = ({ control, onClick, label, ...rest }) => {
   switch (control) {
     case "input":
+    case "select":
     case "textarea":
       return <Inputs control={control} {...rest} disabled />;
     case "img":
@@ -14,9 +15,15 @@ const LoanReviewController = ({ control, onClick, ...rest }) => {
       const { src, alt } = rest;
 
       return <img src={src} alt={alt} onClick={onClick} />;
+    case "button":
+      return (
+        <button type="button" onClick={onClick}>
+          {label}
+        </button>
+      );
     default:
       return null;
   }
 };
 
-export default LoanReviewController;
+export default ClientProfileController;

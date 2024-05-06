@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import LoanReviewController from "./LoanReviewController";
-import ImagePopup from "./ImagePopup";
+import ImagePopup from "../../../components/ImagePopup";
 
 function LoanReview({ src, alt }) {
   const [activeSection, setActiveSection] = useState(0);
@@ -197,6 +197,18 @@ function LoanReview({ src, alt }) {
               toggleImagePopup(
                 require("../../../../src/assets/images/collateral-duplex.png"),
                 "Click to view the property submitted"
+              ),
+          },
+          {
+            id: "cert_of_ownership",
+            type: "img",
+            label: "Property CfO",
+            alt: "Click to view the property's CfO",
+            src: require("../../../../src/assets/images/collateral-cert-of-ownership.png"),
+            onClick: () =>
+              toggleImagePopup(
+                require("../../../../src/assets/images/collateral-cert-of-ownership.png"),
+                "Click to view the property's CfO"
               ),
           },
         ],

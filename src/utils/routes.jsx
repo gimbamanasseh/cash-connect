@@ -1,15 +1,27 @@
-// import { Navigate } from "react-router-dom";
-// import { Home, overview, loans } from "../pages";
+import React from "react";
 import AdminWelcome from "../components/AdminWelcome";
 import LoanApplicationReview from "../pages/loanApplication";
 import Loans from "../pages/loans";
 import OverviewAdmin from "../pages/overview";
+import Agents from "../pages/agents";
+import AgentDetails from "../pages/agentDetails";
+import AddAgent from "../pages/AddAgent";
+import ClientAll from "../pages/clients";
+import ClientsProfile from "../pages/clientsProfile";
 
 const routes = [
   { path: "/", element: <AdminWelcome /> },
   { path: "/overview", element: <OverviewAdmin /> },
   { path: "/loans", element: <Loans /> },
-  { path: "/loan-application-review", element: <LoanApplicationReview /> },
+  {
+    path: "/loans/loan-application-review",
+    element: <LoanApplicationReview />,
+  },
+  { path: "/agents", element: <Agents /> },
+  { path: "/agents/agent-details", element: <AgentDetails /> },
+  { path: "/agents/add-agent", element: <AddAgent /> },
+  { path: "/clients", element: <ClientAll /> },
+  { path: "/clients/client-profile", element: <ClientsProfile /> },
 ];
 
 export { routes };
