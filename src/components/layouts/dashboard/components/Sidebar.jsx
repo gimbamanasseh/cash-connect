@@ -103,7 +103,7 @@ function Sidebar() {
             </li>
             <li>
               <a
-                href="/"
+                href="/agents"
                 className="flex items-center p-2 text-[#98A2B3] hover:font-semibold hover:text-white group rounded-[0.25rem] px-[1rem] py-[0.75rem] sidebar-link"
               >
                 <svg
@@ -120,7 +120,7 @@ function Sidebar() {
             </li>
             <li>
               <a
-                href="/"
+                href="/clients"
                 className="flex items-center p-2 text-[#98A2B3] hover:font-semibold hover:text-white group rounded-[0.25rem] px-[1rem] py-[0.75rem] sidebar-link"
               >
                 <svg

@@ -1,11 +1,11 @@
 import { DashboardLayout } from "../../components/layouts";
 import MainContent from "./components/MainContent";
 
-function Agents() {
+function AddAgent() {
   return (
     <DashboardLayout>
       <MainContent />
     </DashboardLayout>
   );
 }
-export default Agents;
+export default AddAgent;

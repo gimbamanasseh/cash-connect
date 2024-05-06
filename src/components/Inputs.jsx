@@ -1,9 +1,10 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
-import TextError from "./TextError";
+// import TextError from "./TextError";
 
 const Inputs = (props) => {
-  const { id, label, name, type, placeholder, ...rest } = props;
+  const { id, control, label, name, type, placeholder, options, ...rest } =
+    props;
 
   const getIcon = () => {
     if (type === "password") {
@@ -35,34 +36,97 @@ const Inputs = (props) => {
     return null;
   };
 
-  return (
-    <div className="mb-[1.5rem]">
-      <label
-        htmlFor={name}
-        className="block text-sm text-left font-medium leading-6 text-grey-900"
-      >
-        {label}
-      </label>
-      <div className="relative mt-2 rounded-md shadow-sm">
-        <Field
-          id={id}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          {...rest}
-          className="block w-full bg-none border-0 rounded-[0.375rem] ring-inset ring-1 ring-grey-500 focus:outline-none focus:ring-1 focus:ring-orange p-[1rem] text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-        />
-        <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center  z-index-10">
-          <span className="text-gray-500 sm:text-sm">{getIcon()}</span>
+  switch (control) {
+    case "input":
+      return (
+        <div className="mb-[1.5rem]">
+          <label
+            htmlFor={name}
+            className="block text-sm text-left font-medium leading-6 text-grey-900"
+          >
+            {label}
+          </label>
+          <div className="relative mt-2 rounded-md shadow-sm">
+            <Field
+              id={id}
+              name={name}
+              type={type}
+              placeholder={placeholder}
+              {...rest}
+              className="block w-full bg-none border-0 rounded-[0.375rem] ring-inset ring-1 ring-grey-500 focus:outline-none focus:ring-1 focus:ring-orange p-[1rem] text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            />
+            <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center  z-index-10">
+              <span className="text-gray-500 sm:text-sm">{getIcon()}</span>
+            </div>
+            <span className="flex select-none items-center pl-3 text-red-500 sm:text-sm">
+              <ErrorMessage name={name}>
+                {(error) => <span className="text-red-500">{error}</span>}
+              </ErrorMessage>
+            </span>
+          </div>
         </div>
-        <span className="flex select-none items-center pl-3 text-red-500 sm:text-sm">
-          <ErrorMessage name={name}>
-            {(error) => <TextError message={error} />}
-          </ErrorMessage>
-        </span>
-      </div>
-    </div>
-  );
+      );
+    case "textarea":
+      return (
+        <div className="mb-[1.5rem]">
+          <label
+            htmlFor={name}
+            className="block text-sm text-left font-medium leading-6 text-grey-900"
+          >
+            {label}
+          </label>
+          <div className="relative mt-2 rounded-md shadow-sm">
+            <Field
+              as="textarea"
+              id={id}
+              name={name}
+              placeholder={placeholder}
+              {...rest}
+              className="block w-full bg-none border-0 rounded-[0.375rem] ring-inset ring-1 ring-grey-500 focus:outline-none focus:ring-1 focus:ring-orange p-[1rem] text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            />
+            <span className="flex select-none items-center pl-3 text-red-500 sm:text-sm">
+              <ErrorMessage name={name}>
+                {(error) => <span className="text-red-500">{error}</span>}
+              </ErrorMessage>
+            </span>
+          </div>
+        </div>
+      );
+    case "select":
+      return (
+        <div className="mb-[1.5rem]">
+          <label
+            htmlFor={name}
+            className="block text-sm text-left font-medium leading-6 text-grey-900"
+          >
+            {label}
+          </label>
+          <div className="relative mt-2 rounded-md shadow-sm">
+            <Field
+              as="select"
+              id={id}
+              name={name}
+              {...rest}
+              className="block w-full bg-none border-0 rounded-[0.375rem] ring-inset ring-1 ring-grey-500 focus:outline-none focus:ring-1 focus:ring-orange p-[1rem] text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            >
+              {options &&
+                options.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+            </Field>
+            <span className="flex select-none items-center pl-3 text-red-500 sm:text-sm">
+              <ErrorMessage name={name}>
+                {(error) => <span className="text-red-500">{error}</span>}
+              </ErrorMessage>
+            </span>
+          </div>
+        </div>
+      );
+    default:
+      return null;
+  }
 };
 
 export default Inputs;

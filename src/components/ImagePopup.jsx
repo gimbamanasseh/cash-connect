@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-// import collateralImg from "../../../../src/assets/images/collateral-cert-of-ownership.png";
 
 // Set the root element to attach the modal to
 Modal.setAppElement("#root");
@@ -50,7 +49,7 @@ const ImagePopup = ({ isOpen, onClose, imageUrl, altText }) => {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } relative top-12 z-50 mx-auto p-4 max-w-2xl justify-center items-center rounded-lg shadow-2xl h-auto`}
+        } relative top-12 z-50 mx-auto p-4 max-w-2xl justify-center items-center rounded-lg shadow-2xl h-auto backdrop-blur-sm`}
       >
         {/* Modal content */}
         <div className="relative">

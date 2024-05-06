@@ -1,4 +1,11 @@
-function clientAll() {
-  return <div>All clients and details of each</div>;
+import { DashboardLayout } from "../../components/layouts";
+import MainContent from "./components/MainContent";
+
+function ClientAll() {
+  return (
+    <DashboardLayout>
+      <MainContent />
+    </DashboardLayout>
+  );
 }
-export default clientAll;
+export default ClientAll;
