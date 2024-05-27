@@ -137,7 +137,7 @@ function Sidebar() {
             </li>
             <li>
               <a
-                href="/"
+                href="/messaging"
                 className="flex items-center p-2 text-[#98A2B3] hover:text-white rounded-[0.25rem] group px-[1rem] py-[0.75rem] sidebar-link"
               >
                 <svg

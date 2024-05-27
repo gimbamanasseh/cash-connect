@@ -23,6 +23,8 @@ function ClientProfileForm() {
     collateral_name: "A duplex",
     collateral_worth: "N 75, 000, 000.00",
     collateral_img1: "",
+    collateral_img2: "",
+    collateral_img3: "",
   };
 
   const validationSchema = Yup.object({
@@ -157,10 +159,30 @@ function ClientProfileForm() {
             />
             <ClientProfileController
               control="button"
-              label="View Collateral Photo 1"
+              label="Click to View Collateral Photo 1"
+              onClick={() =>
+                toggleImagePopup(
+                  require("../../../../src/assets/images/terms-and-condition.png"),
+                  "Click to view the property submitted"
+                )
+              }
+            />
+            <ClientProfileController
+              control="button"
+              label="Click to View Collateral Photo 2"
               onClick={() =>
                 toggleImagePopup(
                   require("../../../../src/assets/images/collateral-duplex.png"),
+                  "Click to view the property submitted"
+                )
+              }
+            />
+            <ClientProfileController
+              control="button"
+              label="Click to View Collateral Photo 2"
+              onClick={() =>
+                toggleImagePopup(
+                  require("../../../../src/assets/images/collateral-cert-of-ownership.png"),
                   "Click to view the property submitted"
                 )
               }

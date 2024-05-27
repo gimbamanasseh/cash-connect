@@ -8,6 +8,7 @@ import AgentDetails from "../pages/agentDetails";
 import AddAgent from "../pages/AddAgent";
 import ClientAll from "../pages/clients";
 import ClientsProfile from "../pages/clientsProfile";
+import Messaging from "../pages/messaging";
 
 const routes = [
   { path: "/", element: <AdminWelcome /> },
@@ -22,6 +23,7 @@ const routes = [
   { path: "/agents/add-agent", element: <AddAgent /> },
   { path: "/clients", element: <ClientAll /> },
   { path: "/clients/client-profile", element: <ClientsProfile /> },
+  { path: "/messaging", element: <Messaging /> },
 ];
 
 export { routes };
